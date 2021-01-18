@@ -1,0 +1,10 @@
+remote:
+  fertility:
+    driver: orderly.sharepoint::orderly_remote_sharepoint
+    args:
+      url: https://imperiallondon.sharepoint.com
+      site: HIVInferenceGroup-WP
+      path: Shared Documents/orderly/fertility
+
+global_resources:
+  global

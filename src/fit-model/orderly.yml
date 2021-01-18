@@ -1,0 +1,45 @@
+script: fit_model.R
+
+artefacts:
+  - data:
+      description: fertility indicator dataset
+      filenames:
+        - moz_fr.csv
+  - staticgraph:
+      description: Validate admin-1 TFRs
+      filenames:
+        - check/moz_tfr_admin1.pdf
+        - check/moz_tfr_district.pdf
+
+packages:
+  - dplyr
+  - tidyr
+  - dfertility
+  - ggplot2
+  - naomi
+  - readr
+  - sf
+  - stringr
+  - TMB
+  - Matrix
+
+global_resources:
+  resources/relaxed_eta2.cpp: relaxed_eta2.cpp
+
+depends:
+  moz_data_areas:
+    id: latest
+    use:
+      depends/moz_areas.geojson: moz_areas.geojson
+  moz_data_population:
+    id: latest
+    use:
+      depends/moz_population_nso.csv: moz_population_nso.csv
+  moz_asfr:
+    id: latest
+    use:
+      depends/moz_fr_plot.csv: moz_fr_plot.csv
+      depends/moz_dhs_asfr.csv: moz_dhs_asfr.csv
+      depends/moz_mics_asfr.csv: moz_mics_asfr.csv
+      depends/moz_asfr.csv: moz_asfr.csv
+
